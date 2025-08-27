@@ -14,7 +14,7 @@ class KokoaCrew:
         task = self.tasks
         agent = self.agents
         return Crew(
-            tasks=[task.general_search_task(),task.general_answer_task()],
+            tasks=[task.general_search_task(), task.web_search_task(), task.general_answer_task()],
             agents=[agent.data_search(),agent.general_answer()],
             process=Process.sequential,
             manager_llm=openai

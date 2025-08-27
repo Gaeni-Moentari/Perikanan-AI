@@ -20,6 +20,17 @@ class Tasks:
             agent=agents.data_search(),
             tools=[RAGSearch]
         )
+        
+    def web_search_task (self) :
+        return Task(
+            description=f"Tugas akmu adalah mencari video youtube terkait input {self.input} beserta dengan linknya"
+                         "kamu akan memberikan hasil pencarian mu kepada penulis jawaban"
+                         "Kamu akan menggunakan alat [WebSearch]",
+            expected_output="sebuah hasil pencarian link video youtube berkaitan dengan pertanyaan"
+                            "gunakan format - link video 1 - link video 2 dan seterusnya",
+            agent=agents.data_search(),
+            tools=[WebSearch]
+        )
     
     def general_answer_task(self):
         return Task(
@@ -28,7 +39,8 @@ class Tasks:
                         "Menggunakan data yang dicari sebelumnya"
                         "sematkan link referensi yang mendukung jawabanmu dari informasi yang disediakan",
             expected_output="Jawaban dibuat dengan markdown dengan format seperti wikipedia singkat"
-                            "Jawaban menyertakan referensi yang bisa dikunjungi di akhir"
+                            " Jawaban menyertakan referensi dari youtube yang bisa dikunjungi di akhir"
+                            " sertakan juga beberapa hasil website yang ditemukan"
                             f"jawaban HARUS Menggunakan bahasa berikut = {self.lang}",
             agent=agents.general_answer()
         )

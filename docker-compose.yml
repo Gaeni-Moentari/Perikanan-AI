@@ -14,7 +14,6 @@ services:
         - "traefik.enable=true"
         - "traefik.docker.network=traefik-public"
         - "traefik.constraint-label=traefik-public"
-        - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
         - "traefik.http.routers.perikanan.rule=Host(`ai.ikanjabar.com`)"
         - "traefik.http.routers.perikanan.entrypoints=https"
         - "traefik.http.routers.perikanan.tls=true"
